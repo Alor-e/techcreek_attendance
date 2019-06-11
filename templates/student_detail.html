@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="backg-img3">
+<div class="container p-4">
+    <div class="row justify-content-center">
+        <div class="col-9 card bg-transparent shadow-sm px-2" style="border-radius: 1%">
+            <div class=" bg-transparent border-bottom-0 text-justify font-weight-light pl-4">
+            <h1 class="font-weight-light pt-3">{{student.surname}} {{student.firstname}} {% if student.middlename %}{{student.middlename}},    {% endif %} <span class="small_text">ID = </span> {{student.id}}</h1>
+            </div>
+        
+            <div class="bg-transparent font-weight-light pl-4"> 
+                <h4 class="pt-2">Personal Information</h4><hr class="mr-4 mt-2">
+
+                <div class="row ">
+                        <div class="col-4">
+                                <h5>Surname</h5>
+                                <p>{{student.surname}}</p>
+                        </div>
+                        <div class="col-4">
+                                <h5>Firstname</h5>
+                                <p>{{student.firstname}}</p>
+                        </div>
+                        <div class="col-4">
+                                <h5>Middlename</h5>
+                                <p>{% if student.middlename %}{{student.middlename}} {% endif %}</p>
+                        </div>
+        
+                </div>
+                
+                <div>
+                        <h5>Date of birth</h5>
+                        <p>{{student.birthday}}</p>
+                </div>
+                <div>
+                        <h5>Gender</h5>
+                        <p>{{student.gender}}</p>
+                </div>
+                <div>
+                        <h5>State of Origin</h5>
+                        <p>{{student.state_of_origin}}</p>
+                </div>
+                <div>
+                        <h5>Local Government Area</h5>
+                        <p>{{student.local_govt}}</p>
+                </div>
+                <div>
+                        <h5>Phone Number</h5>
+                        <p>{{student.phone_no}}</p>
+                </div>
+                <div>
+                        <h5>Email</h5>
+                        <p>{{student.email}}</p>
+                </div>
+                <div>
+                        <h5>Educational Qualification</h5>
+                        <p>{{student.edu_qualification}}</p>
+                </div>
+                <div>
+                        <h5>Program</h5>
+                        <p>{{student.program}}</p>
+                </div>
+                <div>
+                        <h5>Residential Address</h5>
+                        <p>{{student.address}}</p>
+                </div>
+            
+            </div>
+            
+            <div class=" bg-transparent font-weight-light pl-4">
+                <h4 class="pt-3">System Information</h4><hr class="mr-4 mt-2">
+                <div>
+                        <h5>Date Registered on this system</h5>
+                        <p>{{student.registration_date}}</p>
+                </div>
+                <div>
+                        <h5>Student ID Number</h5>
+                        <p>{{student.id}}</p>
+                </div>
+                <div>
+                        <h5>Number of times present</h5>
+                        <p>{{student.roll_no}}</p>
+                </div>
+                <div>
+                        <h5>Attendance State (for today)</h5>
+                        <div>
+                        {% if student.already_taken == True %}
+                            <p>Attendance has already been taken for {{student.surname}} {{student.firstname}}</p>
+                        {% else %}
+                        <div class="pl-5 ml-2" id="list_div">
+                                <form action="{% url 'take_attendance' student.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn btn-secondary px-1" type="submit" id="resp_text_4a">Take Attendance</button>
+                                </form>
+                        </div> 
+
+                        {% endif %}
+                        </div>
+                </div>
+            
+            </div>
+    
+        </div>
+    
+    
+    
+    
+    </div>
+</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container p-4 font-weight-light" id="">
+    <div class="row justify-content-center">
+        <div class="col-9 card bg-transparent shadow-sm px-2 justify-self-center" style="border-radius: 1%">
+        <div class="row pt-4">
+        <div class="col-7">
+                <h2 class="">Total Number of Students</h2>
+                <h4 class="text-center">{{total_number}}</h4>
+        </div> 
+        <div class="col-2">
+                <h4>Females</h4>
+                <h5>{{female_num}}</h5>
+            </div>
+            <div class="col-2">
+                <h4>Males</h4>
+                <h5>{{male_num}}</h5>
+            </div>
+
+        </div>
+
+        <div class="row pt-2">
+            <div class="col-12">
+                <h3>Student Distribution by Programs</h3>
+                <h5 class="" style="font-size: 1.5rem">Codegaminators {{cgm}} Students</h5>
+            </div>
+            
+        </div>  
+
+
+        <div class="row">
+                <div class="col-4">
+                    <h5>ICT and Digital Lifestyle</h5>
+                    {{ict}}
+                </div>
+                <div class="col-4">
+                        <h5>DBA 500</h5>
+                        {{dba_500}}
+                </div>
+                <div class="col-4">
+                        <h5>Digi-lifestyle for kids</h5>
+                        {{kids}}
+                </div>
+    
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h5 class="" style="font-size: 1.5rem">Codegaminators {{cgm}} Students</h5>
+            </div>
+            
+            <div class="col-12">
+                <h5>Animation</h5>
+                {{animation_num}}
+            </div>
+            
+            <div class="col-12">
+                    <h5>Coding</h5>
+                    {{coding_num}}
+            </div>
+            <div class="col-12">
+                    <h5>Database</h5>
+                    {{database_num}}
+            </div>
+            <div class="col-12">
+                    <h5>Game Development</h5>
+                    {{game_dev_num}}
+            </div>
+            <div class="col-12">
+                    <h5>Hardware</h5>
+                    {{hardware_num}}
+            </div>
+            <div class="col-12">
+                    <h5>Photography</h5>
+                    {{photography_num}}
+            </div>
+        </div>
+
+        
+
+        <div class="row ">
+            <div class="col-12 pt-2 ">
+                <h3>Student Distribution by States</h3>
+                <p>Only states that have students are shown.</p>        
+            </div>    
+        </div>
+
+        <div class="row ">
+            
+            {% for a in states %}
+                
+                {% if a.student.all %}
+                <div class="col-3">
+                    <h5>{{a}}</h5>
+                    <p>{{a.student.count}}</p>
+                </div>
+                {% endif %}
+                    
+            {% endfor %}
+                
+
+        </div>
+        
+        <div class="row">
+                <div class="col-12">
+                    <h3>Student Distribution by Local Government for River State</h3>       
+                </div>    
+        </div>
+        <div class="row">
+            
+            {% for a in lga %}
+                    
+                
+                <div class="col-3">
+                    <h5>{{a}}</h5>
+                    <p>{{a.student_set.count}}</p>
+                </div>
+                
+                        
+            {% endfor %}
+                    
+        
+        </div>
+        </div>
+    </div>
+
+</div> 
+
+
+
+{% endblock content %}
+    

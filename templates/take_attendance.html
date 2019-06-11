@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="take_body">   
+<div class="container">
+    <div class="pt-5">
+        <div class="row justify-content-center pt-5">
+            <div class="col-6 text-justify pt-5 text-center">
+                <h1 class="text-center pt-5 " id="resp_text_10">Take Attendance</h1>
+                <p class="text-justify text-center font-weight-light pt-2 mb-0 pb-0">Simply search for a student by entering the student unique ID below.</p>
+                <p class="text-justify text-center font-weight-light pb-2">For searching through names please use the navbar</p>
+                <form class=" my-2 mx-3 my-lg-0 mr-3 align-self-center" method="GET" action="{% url 'take_attendance_search2' %}">
+                        
+                        <div class="px-3"> 
+                            <input class="form-control mr-sm-2" type="search" placeholder="Please Enter the user ID" aria-label="Search" name="q" id="q">
+                        </div>
+                        <div class="pt-4"> 
+                            <button class="btn btn-secondary my-2 my-sm-0 " type="submit"><i class="fa fa-search"></i> Search </button>
+                        </div>
+                </form>
+                
+                <div></div>
+            </div>
+        </div>
+   </div>
+</div>
+</div> 
+{% endblock content %}
+    

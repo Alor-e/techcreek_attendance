@@ -1,0 +1,85 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+{{ form.media }}
+<script src="/path/to/jquery.js"></script><!-- jQuery is required -->
+<link  href="/path/to/datepicker.css" rel="stylesheet">
+<script src="/path/to/datepicker.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js" integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+
+<div class="backg-img2">
+<div class="container pt-5">
+    <div class="row justify-content-center pt-3 pb-5">
+        <div class="col-10 ">
+            <div class="card shadow-sm" style="border-radius: 2%">
+                <div class="card-body">
+                    <H1 class="text-justify mb-1 px-1" id="resp_text_7">Student Registration Form</H1>
+                    <p class="text-justify font-weight-light px-1" id="resp_text_4">Please kindly fill all the fields as they are required except the middlename. Thanks.</p>
+                    <hr class="mb-0 mx-1">
+                    {{ form.media }}
+                    <form method="post" class="reg_form" enctype="multipart/form-data">    
+                        <div class="form-row p-2">
+                            
+                            {% csrf_token %}
+                            {{ form.media.js }}
+                            <div class="form-group col-md-4 mb-0 px-1">
+                            {{ form.surname|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-4 mb-0 px-1">
+                            {{ form.firstname|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-4 mb-0 px-1">
+                            {{ form.middlename|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0 pr-2">
+                            {{ form.birthday|as_crispy_field }}
+                            </div>
+                            
+                            <div class="form-group col-md-6 mb-0 pl-2">
+                            {{ form.gender|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0 pr-2">
+                            {{ form.state_of_origin|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0 pl-2">
+                            {{ form.local_govt|as_crispy_field }}
+                            </div>
+                            
+                            <div class="form-group col-md-6 mb-0 pr-2">
+                            {{ form.phone_no|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0 pl-2">
+                            {{ form.email|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0 pr-2">
+                            {{ form.edu_qualification|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0 pl-2">
+                            {{ form.program|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-12 mb-0 px-1 pb-0">
+                            {{ form.address|as_crispy_field }}
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary mt-2 mb-0" id="resp_text_4"><i class="fa fa-user-circle" aria-hidden="true"></i> Register</button>
+                    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+{% endblock content %}
+

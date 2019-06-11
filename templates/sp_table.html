@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="hgh2">
+    <div class="table">
+        <table class="table-responsive table-bordered table-striped table-hover" id="hgh2">    
+            
+            <thead>
+                <tr>
+                    <th scope="col" style="min-width: 6.7rem" id="hgh2">Student ID</th>
+                    <th scope="col" style="min-width: 16rem" id="hgh2">Student</th>
+                    <th scope="col" style="min-width: 7rem" id="hgh2"> Times Present</th>
+                    <th scope="col" style="min-width: 7rem" id="hgh2"> Percentage Attendance</th>
+
+                    {% for b in a %}
+                    
+                        <th scope="col" id="hgh2">Day {{forloop.counter}} {{b.date | date:"SHORT_DATE_FORMAT"}}</th>
+                    {% endfor %}
+                    
+                </tr>
+            </thead>
+                
+                
+            <tbody>
+                        
+                {% for s in student %}
+                    
+                    {% if s.attendance.all %}
+                          
+                  <tr>
+
+                        <th scope="col">{{s.pk}}</th>
+                        <th scope="col" ><a href="{% url 'student_detail' s.id %}" class="hgh2"> {{s.surname}} {{s.firstname}} {% if s.middlename %} {{s.middlename}} {% endif %}</a></th>
+                            
+                        <th scope="col" id="hgh2">{{s.roll_no}} out of {{total}}</th>
+                        <th scope="col" id="hgh2">{{s.get_percentage}} %</th>
+                        {% for a in s.attendance.all %}
+                        
+                        {% if a.present_state == True %}
+                        <td class="" style="min-width: 6.7rem"><i class="fa fa-check " aria-hidden="true"></i></td>
+                        {% else %}
+                        <td style="min-width: 6.7rem"><i class="fa fa-times" style="color: rgb(252, 71, 71)" aria-hidden="true"></i></td>    
+                        {% endif %}
+                            
+                        
+                        
+                        {% endfor %}
+                  </tr>
+                    {% endif %}
+                {% endfor %}  
+                
+            
+            
+            </tbody>
+    
+    
+    
+        </table>
+    </div>
+
+</div>
+
+
+{% endblock content %}
+    
+

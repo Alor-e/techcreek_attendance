@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+{% load staticfiles %}
+
+
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '../static/css/main.css' %}" >
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600|Roboto+Condensed:300,400|Roboto:300,400&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">  
+    <title>
+    {% block title %}
+      
+    {% endblock title %}
+       </title>
+  </head>
+  <body>
+    
+    <nav id='nav_color' class="navbar sticky-top navbar-expand-xl navbar-light shadow-sm py-3 font-weight-normal">
+    
+      <a class="navbar-brand ml-5" href="{% url 'login' %}">TechCreek</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active mx-1">
+            <a class="nav-link" href="{% url 'home'%}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link" href="{% url 'take_attendance_search'%}">Take Attendance</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link" href="{% url 'stu_registration'%}">Register Student</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link" href="{% url 'student_list' %}">Student Info</a>
+          </li>
+          <li class="nav-item dropdown mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Overview
+              </a>
+              <div class="dropdown-menu ml-0" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'cgm_summary'%}"><i class="fa fa-code"></i> Codegaminators</a>
+                <a class="dropdown-item" href="{% url 'ict_summary'%}"><i class="fa fa-laptop" aria-hidden="true"></i>  Digital Lifestyle</a>
+                <a class="dropdown-item" href="{% url 'kids_summary'%}"><i class="fa fa-child"></i>  Digi-lifestyle for kids</a>
+                <a class="dropdown-item" href="{% url 'dba_summary'%}"><i class="fa fa-database"></i> DBA 500</a>
+                <div class="dropdown-divider"></div>
+                <p class="dropdown-item mb-0" > <i class="fa fa-line-chart" aria-hidden="true" ></i><a href="{% url 'statistics'%}" id="drop_down_stats"> General Statistics</a></p>
+              </div>
+            </li>
+          
+          
+          
+          {% if user.is_authenticated %}
+            <li class="nav-item dropdown mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{user.username|capfirst}}
+            </a>
+            <div class="dropdown-menu ml-0" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>  Sign Out</a>
+              
+              <div class="dropdown-divider"></div>
+              <p class="dropdown-item mb-0" ><i class="fa fa-user" aria-hidden="true"></i><span> </span> {{user.first_name|capfirst}}, {{user.last_name|capfirst}}</p>
+            </div>
+          </li>
+
+          {% else %}
+          <li class="nav-item mx-1">
+            <a class="nav-link" href="{% url 'login'%}">Sign In</a>
+          </li>
+
+          {% endif %}
+            
+          
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-3" method="GET" action="{% url 'search' %}">
+          <div class="input-group">
+            <input class="form-control mr-0 border-right-0" type="search" placeholder="Search" aria-label="Search" name="q">
+              <div class="input-group-append"> 
+                  <button class="input-group-text bg-white" type="submit"><i class="fa fa-search"></i></button>
+              </div>
+            
+          </div>
+        </form>
+      </div>
+    
+    </nav>
+
+    
+    
+
+    {% block content %}
+      
+    {% endblock content %}
+      
+     
+         
+    
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+    <script>
+    $(document).ready(function() {
+  $('li.active').removeClass('active');
+  $('a[href="' + location.pathname + '"]').closest('li').addClass('active'); 
+  });
+    </script>    
+  
+  </body>
+</html>

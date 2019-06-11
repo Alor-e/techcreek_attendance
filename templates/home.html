@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<div class="backg-img4">
+<div class="container pt-5 pb-5" >
+   <div class="row justify-content-center mt-5 pb-5" >
+    
+        <div class="col-4 text-justify">
+            <div class="pt-5">
+            <div class="pt-5"> 
+                <h1 class="text-center font-weight-light">Easy, Simple Attendance System</h1>
+                <p class="text-center font-weight-light mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.
+                </p>
+                
+                {% if user.is_authenticated %}
+                <p class="text-center font-weight-light"> Thanks for signing in and welcome, {{user.first_name|capfirst}}</p>
+                <div class="row justify-content-center ">
+                        <a href="{% url 'home'%}" class="btn btn-secondary font-weight-light ">Get Started</a>
+                </div>  
+                {% else %}
+                <p class="text-center font-weight-light"> Get started by signing in. You won't be able to use this system if you have not.</p>
+                <div class="row justify-content-center ">
+                    <a href="{% url 'login'%}" class="btn btn-secondary font-weight-light ">Go Sign In</a>
+                </div>
+                {% endif %}
+                    
+            </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <img src="../static/images/landing_1.png" alt="" class="img-fluid img-absolute">
+        </div>
+        
+   </div>
+
+    
+</div>
+
+<div id="section_1" class='pb-5'>
+<div class="container pt-5">
+    <div class="row justify-content-center mt-5">
+        <div class="col-8">
+            <img src="../static/images/landing_2.png" alt="" class="img-fluid img-absolute">
+        </div>
+        
+        <div class="col-4 text-justify pt-3">
+                <div class="pt-5">
+                <div class="pt-5"> 
+                    <h1 class="text-center font-weight-light">Easy, Simple Attendance System</h1>
+                    <p class="text-center font-weight-light mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.
+                    </p>
+                    <p class="text-center font-weight-light"> Get started by signing in. You won't be able to use this system if you have not.</p>
+                    <div class="row justify-content-center ">
+                        <a href="{% url 'login'%}" class="btn btn-secondary font-weight-light ">Go Sign In</a>
+                    </div>
+                        
+                </div>
+            </div>
+        </div>    
+        
+    </div>
+</div>
+</div>
+
+<div class="container pt-5">
+        <div class="row justify-content-center mt-5 pb-5">
+         
+             <div class="col-4 text-justify">
+                 <div class="pt-5">
+                 <div class="pt-5"> 
+                     <h1 class="text-center font-weight-light">Easy, Simple Attendance System</h1>
+                     <p class="text-center font-weight-light mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.
+                     </p>
+                     
+                     {% if user.is_authenticated %}
+                     <p class="text-center font-weight-light"> Thanks for signing in and welcome, {{user.first_name|capfirst}}</p>
+                     <div class="row justify-content-center ">
+                             <a href="{% url 'home'%}" class="btn btn-secondary font-weight-light ">Get Started</a>
+                     </div>  
+                     {% else %}
+                     <p class="text-center font-weight-light"> Get started by signing in. You won't be able to use this system if you have not.</p>
+                     <div class="row justify-content-center ">
+                         <a href="{% url 'login'%}" class="btn btn-secondary font-weight-light ">Go Sign In</a>
+                     </div>
+                     {% endif %}
+                         
+                 </div>
+                 </div>
+             </div>
+             <div class="col-8">
+                 <img src="../static/images/landing_3.png" alt="" class="img-fluid img-absolute">
+             </div>
+             
+        </div>
+     
+         
+     </div>
+
+</div>     
+{% endblock content %}
+    
