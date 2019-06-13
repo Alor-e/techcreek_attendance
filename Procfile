@@ -1,1 +1,1 @@
-web: PYTHONPATH=$(pwd)'/src' waitress-serve --port=$PORT TC1.wsgi:application 
+web: gunicorn TC1.wsgi --log-file -
