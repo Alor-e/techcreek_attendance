@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT TC1.wsgi:application 
+web: PYTHONPATH=$(pwd)'/src' waitress-serve --port=$PORT TC1.wsgi:application 
