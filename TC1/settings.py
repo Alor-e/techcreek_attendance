@@ -163,3 +163,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
+django_heroku.settings(locals())
