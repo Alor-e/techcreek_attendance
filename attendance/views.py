@@ -154,12 +154,22 @@ def take_attendance(request, pk):
     '''now = datetime.datetime.now()
     if now.hour == 13 and now.minute == 30:
         s.already_taken = False'''
-    a = get_object_or_404(Attendance, date=datetime.date.today(), linked_student=s)
-    a.present_state = True
-    a.save()
-    s.roll_no = Attendance.objects.filter(linked_student=s, present_state=True).count()
-    s.already_taken = True
-    s.save()
+    try:
+        a = get_object_or_404(Attendance, date=datetime.date.today(), linked_student=s)
+        a.present_state = True
+        a.save()
+        s.roll_no = Attendance.objects.filter(linked_student=s, present_state=True).count()
+        s.already_taken = True
+        s.save()
+    except:
+        a = Attendance(date=datetime.date.today(), linked_student=s)
+        a.present_state = True
+        a.save()
+        s.roll_no = Attendance.objects.filter(linked_student=s, present_state=True).count()
+        s.already_taken = True
+        s.save()
+        pass
+    
     return HttpResponseRedirect(reverse('take_attendance_search'))
 
 
