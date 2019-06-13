@@ -20,27 +20,41 @@ from datetime import date
 
 @background(schedule=10)
 def attendance_resetter():
-    Student.objects.all().update(already_taken=False)
-    
-    if date.today().weekday() == (0,2,4):
-        s = Student.objects.filter(program__icontains='Codegaminators')
-        for b in s:
-            a = Attendance(date=datetime.date.today(), linked_student=b)
-            a.save()
-    elif date.today().weekday() == (0,1,2,3,4):
-        s = Student.objects.filter(program__contains='ICT')
-        e = Student.objects.filter(program__contains='kids')
-        r = Student.objects.filter(program__contains='DBA 500')
-        other = s|e|r
-        for b in other:
-            a = Attendance(date=datetime.date.today(), linked_student=b)
-            a.save()
+    all = Student.objects.all()
 
+    for ind in all:
+        if ind.attendance.all().filter(date=datetime.date.today(), present_state=True):
+            pass
+        else:
+            ind.already_taken = False
+            ind.save()
+            if date.today().weekday() == 0 or date.today().weekday() == 2 or date.today().weekday() == 4:
+                s = Student.objects.filter(program__icontains='Codegaminators')
+                for b in s:
+                    try:
+                        a = Attendance(date=datetime.date.today(), linked_student=b)
+                        a.save()
+                    except:
+                        pass
+                    
+            elif date.today().weekday() == 0 or date.today().weekday() == 1 or date.today().weekday() == 2 or date.today().weekday() == 3 or date.today().weekday() == 4:
+                s = Student.objects.filter(program__contains='ICT')
+                e = Student.objects.filter(program__contains='kids')
+                r = Student.objects.filter(program__contains='DBA 500')
+                other = s|e|r
+                for b in other:
+                    try:
+                        a = Attendance(date=datetime.date.today(), linked_student=b)
+                        a.save()
+                    except:
+                        pass
+                    
+                    
 
 
 def landing_page(request):
-    new_years_2019 = datetime.datetime(2099, 5, 17)
-    attendance_resetter(repeat=15, repeat_until=new_years_2019)
+    new_years_2099 = datetime.datetime(2099, 5, 17)
+    attendance_resetter(repeat=60, repeat_until=new_years_2099)
     return render(request, 'home.html')
 
 
