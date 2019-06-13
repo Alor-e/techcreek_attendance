@@ -67,7 +67,13 @@
               <a class="dropdown-item" href="{% url 'logout'%}"><i class="fa fa-sign-out" aria-hidden="true"></i>  Sign Out</a>
               
               <div class="dropdown-divider"></div>
-              <p class="dropdown-item mb-0" ><i class="fa fa-user" aria-hidden="true"></i><span> </span> {{user.first_name|capfirst}}, {{user.last_name|capfirst}}</p>
+              <p class="dropdown-item mb-0" ><i class="fa fa-user" aria-hidden="true"></i><span> </span>
+              {% if user.first_name %}
+                {{user.first_name|capfirst}}, {{user.last_name|capfirst}}
+              {% else %}
+                {{user.username}}
+              {% endif %}
+                 </p>
             </div>
           </li>
 
