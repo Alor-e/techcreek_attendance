@@ -32,4 +32,4 @@ SearchForm = search_form_factory(Student.objects.all(),
                                  ['surname', 'firstname', 'middlename', 'program'])
 
 SearchForm2 = search_form_factory(Student.objects.all(),
-                                 ['=id'])
+                                 ['=id', 'unique_id'])

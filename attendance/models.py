@@ -74,17 +74,7 @@ class Student(models.Model):
     program = models.CharField(max_length=50, choices=PROGRAMS_CHOICES)
     state_of_origin = models.ForeignKey(State, on_delete=models.PROTECT, related_name='student')
     
-    local_govt = ChainedForeignKey(
-        Local_govt,
-        chained_field="state_of_origin",
-        chained_model_field="state",
-        show_all=False,
-        auto_choose=True,
-        sort=True,
-        verbose_name='Local Government',
-        blank=True,
-        null=True
-        )
+    local_govt = models.CharField('Local Government', blank=True, null=True, max_length=50)
     email = models.EmailField(max_length=254)
     phone_no = models.CharField('Phone Number',max_length=15)
     address = models.TextField()
