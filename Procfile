@@ -1,1 +1,1 @@
-web: waitress-serve —port=$PORT TC1:app
+web: waitress-serve —port=5000 TC1.wsgi:application
