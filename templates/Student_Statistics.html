@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block style %}
+    <style type="text/css">
+    .properties_table{
+       min-height: 540px;
+       font-size: 14px;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+<div class="container-fluid" >
+    <div class="container-fluid"></div>
+
+    <div class="site_filter">
+        <div class="container-fluid">
+            <div class="row justify-content-center m-0 p-0">
+                <div class="col-sm-2 col-2">
+                    <div class="form-group">
+                        <label for="program">Program</label>
+                        <select class="form-control" id="program" 
+                            url = "{%url 'get_program' %}">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-2">
+                    <div class="form-group">
+                        <label for="program_version">Program Version</label>
+                        <select class="form-control" id="program_version" 
+                            url = "{%url 'get_program_version' %}">
+                            <option value='all' selected>All</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-2">
+                    <div class="form-group">
+                        <label for="program_specific">Program Specific</label>
+                        <select class="form-control" id="program_specific" 
+                            url = "{%url 'get_program_specific' %}">
+                            <option value='all' selected>All</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-2">
+                    <div class="form-group">
+                        <label for="state_of_origin">State</label>
+                        <select class="form-control" id="state_of_origin" 
+                            url = "{%url 'get_state_of_origin' %}">
+                        </select>
+                    </div>
+                </div>
+                
+                
+                <div class="col-sm-2 col-2">
+                    <div class="form-group">
+                        <label for="local_govt">Local Government</label>
+                        <select class="form-control" id="local_govt" url = "{%url 'get_local_govt' %}">
+                            <option value='all' selected>All Regions</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-2 col-2">
+                    <div class="form-group">
+                        <label for="sort_by">Sort By</label>
+                        <select class="form-control" id="sort_by">
+                            <option selected="true"
+                            disabled="disabled" value = "none">Choose option</option>
+                            <option value='unique_id'>ID Number</option>
+                            <option value='registration_date'>Date Registered</option>
+                            <option value='roll_no'>Times Present</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-1 col-1">
+                    <div class="row justify-content-center align-self-center"
+                        style="color:white; margin-top:30px;">
+                        <a class="btn btn-secondary" id="display_all">Display all</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <section>
+        <div class="container-fluid">
+            <div id = "result-count" class="text-right">
+                <span class='font-weight-bold'></span> results found.
+            </div>
+            <div class="row properties_table justify-content-center">
+                <div id = "no_results">
+                    <h5>No results found</h5>
+                </div>
+                <div class="">
+                    <table class="table table-bordered table-responsive table-hover table-striped"
+                    id="list_data" data-toggle="table" url = "{% url 'listing' %}">
+                        <thead>
+                            <tr>
+                                <th data-field="sn">S/N</th>
+                                <th data-field="unique_id"> ID Number</th>
+                                <th data-field="surname">Surname</th>
+                                <th data-field="firstname">Firstname</th>
+                                <th data-field="middlename">Middlename</th>
+                                <th data-field="gender">Gender</th>
+                                <th data-field="program">Program</th>
+                                <th data-field="program_version">Program Version</th>
+                                <th data-field="roll_no">Times Present</th>
+                                <th data-field="state_of_origin">State of Origin</th>
+                                <th data-field="local_govt">Local Government Area</th>
+                                <th data-field="email">Email</th>
+                                <th data-field="phone_no">Phone Number</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listing">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <nav aria-label="navigation">
+                    <ul class="pagination">
+                        <li class="page-item px-4">
+                            <button class="btn btn-primary page-link" id="previous">Previous</button>
+                        </li>
+                        <li class="page-item pull-right px-4">
+                            <button class="btn btn-primary page-link" id="next">Next</button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/statistic.js' %}" type="text/javascript">
+    </script>
+{% endblock %}
