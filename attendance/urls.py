@@ -1,5 +1,5 @@
 from django.urls import include, path
-from . import views
+from . import views, views2
 
 urlpatterns = [
     
@@ -26,4 +26,12 @@ urlpatterns = [
     path('student/filter2', views.StudentListView_program_filter2.as_view(), name = 'student_list_program_filter2'),
     path('student/filter3', views.StudentListView_program_filter3.as_view(), name = 'student_list_program_filter3'),
     path('student/filter4', views.StudentListView_program_filter4.as_view(), name = 'student_list_program_filter4'),
+
+    path('', views2.StudentList, name = 'attendance'),
+    path("student_listing/", views2.StudentListing.as_view(), name = 'listing'),
+    path("ajax/program/", views2.get_program, name = 'get_program'),
+    path("ajax/state_of_origin/", views2.get_state_of_origin, name = 'get_state_of_origin'),
+    path("ajax/program_version/", views2.get_program_version, name = 'get_program_version'),
+    path("ajax/local_govt/", views2.get_local_govt, name = 'get_local_govt'),
+    path("ajax/program_specific/", views2.get_program_specific, name = 'get_program_specific'),
 ]

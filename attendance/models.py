@@ -72,8 +72,9 @@ class Student(models.Model):
     )
     
     program = models.CharField(max_length=50, choices=PROGRAMS_CHOICES)
-    state_of_origin = models.ForeignKey(State, on_delete=models.PROTECT, related_name='student')
-    
+    state_of_origin = models.CharField('State of Origin', blank=True, null=True, max_length=50)
+    program_version = models.CharField('Program Version', blank=True, null=True, max_length=50)
+    program_specific = models.CharField('Sub Program', blank=True, null=True, max_length=50)
     local_govt = models.CharField('Local Government', blank=True, null=True, max_length=50)
     email = models.EmailField(max_length=254)
     phone_no = models.CharField('Phone Number',max_length=15)

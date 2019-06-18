@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'smart_selects',
     'background_task',
     'import_export',
-    
+    "rest_framework",
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

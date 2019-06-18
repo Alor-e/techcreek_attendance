@@ -315,3 +315,15 @@ html, body, section, div.left-half, div.right-half, div.img {
 #s_text{
   font-family: 'Roboto', sans-serif;
 }
+
+@media (min-width: 1200px) {
+  .container-fluid{
+      max-width: 98%;
+  }
+}
+
+@media (min-width: 1900px) {
+  .container-fluid{
+      max-width: 90%;
+  }
+}
