@@ -6,7 +6,12 @@ from .models import Student
 from .pagination import StandardResultsSetPagination
 
 def StudentList(request):
-    return render(request, "Student_Statistics.html", {})
+    total_number=Student.objects.all().count()
+    
+
+    context = {'total_number':total_number}
+
+    return render(request, "Student_Statistics.html", context)
 
 class StudentListing(ListAPIView):
 

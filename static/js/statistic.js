@@ -169,7 +169,7 @@ function putTableData(result) {
         row = result["results"].map(function (b) {
             return "<tr> <td>" + count++ + "</td>" +
                 "<td>" + b.unique_id + "</td>"+
-                "<td>" + b.surname + "</td>" +
+                "<td> <a href = 'student_detail/'> " + b.surname + "</a></td>" +
                 "<td>" + b.firstname + "</td>" +
                 "<td>" + b.middlename + "</td>" +
                 "<td>" + b.gender + "</td>" +
@@ -231,6 +231,11 @@ function getAPIData() {
             $("#no_results h5").html("Loading data...");
         },
         success: function (result) {
+            let count = 0
+            result['results'].forEach(element => {
+                element.sn = ++count 
+            });
+
             putTableData(result);
         },
         error: function (response) {
