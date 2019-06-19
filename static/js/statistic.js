@@ -22,6 +22,7 @@ $(document).ready(function () {
 
     // on selecting the program option
 
+
     $('#program').on('change', function () {
         // since program_version and local_govt is dependent 
 
@@ -134,7 +135,7 @@ function resetFilters() {
     $("#local_govt").val("all");
     $("#state_of_origin").val("all");
     $("#sort_by").val("none");
-
+    
     //clearing up the program_version and local_govt select box
     getprogram_specific("all");
     getprogram_version("all");
@@ -165,8 +166,24 @@ function putTableData(result) {
         $("#list_data").show();
         $("#listing").html(""); 
         var count = 1;
-
+        fem = 0
+        mal = 0
         row = result["results"].map(function (b) {
+            
+            
+            if (b.gender=='Female') {
+                female_count = ++fem
+            } else if (b.gender !=='Female') {
+                female_count = fem
+            }
+            
+            if (b.gender=='Male'){
+                male_count = ++mal
+            } else if (b.gender !=='Male'){
+                male_count = mal
+            }
+            
+            
             return "<tr> <td>" + count++ + "</td>" +
                 "<td>" + b.unique_id + "</td>"+
                 "<td> <a href = 'student_detail/'> " + b.surname + "</a></td>" +
@@ -180,7 +197,7 @@ function putTableData(result) {
                 "<td>" + b.local_govt + "</td>" +
                 "<td>" + b.email + "</td>" +
                 "<td>" + b.phone_no + "</td></tr>";
-                
+            
         });
         
         $("#listing").append(row);   
@@ -219,6 +236,9 @@ function putTableData(result) {
     // displaying result count
 
     $("#result-count span").html(result["count"]);
+    $("#total_number").html(result["count"]);
+    $("#female").html(female_count);
+    $("#male").html(male_count);
 }
 
 function getAPIData() {
@@ -333,11 +353,11 @@ function getstate_of_origin() {
         url: url,
         data: {},
         success: function (result) {
-            winery_options = "<option value='all' selected>All Varieties</option>";
+            state_options = "<option value='all' selected>All States</option>";
             $.each(result["state_of_origin"], function (a, b) {
-                winery_options += "<option>" + b + "</option>"
+                state_options += "<option>" + b + "</option>"
             });
-            $("#state_of_origin").html(winery_options)
+            $("#state_of_origin").html(state_options)
         },
         error: function(response){
             console.log(response)
@@ -425,3 +445,4 @@ function getlocal_govt(state_of_origin) {
         }
     });
 }
+

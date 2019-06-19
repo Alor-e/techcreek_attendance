@@ -21,6 +21,7 @@ class StudentListing(ListAPIView):
     def get_queryset(self):
         
         queryList = Student.objects.all()
+        
         program = self.request.query_params.get('program', None)
         state_of_origin = self.request.query_params.get('state_of_origin', None)
         program_version = self.request.query_params.get('program_version', None)
@@ -116,3 +117,20 @@ def get_program_specific(request):
             "program_specific": program_specific, 
         }
         return JsonResponse(data, status = 200)
+
+
+def hotel_image_view(request): 
+  
+    if request.method == 'POST': 
+        form = HotelForm(request.POST, request.FILES) 
+  
+        if form.is_valid(): 
+            form.save() 
+            return redirect('success') 
+    else: 
+        form = HotelForm() 
+    return render(request, 'hotel_image_form.html', {'form' : form}) 
+  
+  
+def success(request): 
+    return HttpResponse('successfuly uploaded') 
