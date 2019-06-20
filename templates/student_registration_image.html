@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+{% load crispy_forms_tags %}
+{{ form.media.js }}
+
+
+
+{{ form.media }}
+  <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.media.js }}
+      {{ form.as_p }}
+      <button type="submit" class="save btn btn-default">Detect</button>
+  </form>
+
+
+
+
+
+
+{% endblock content %}

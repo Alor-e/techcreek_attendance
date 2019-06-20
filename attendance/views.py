@@ -72,6 +72,31 @@ class StudentListView(generic.ListView):
     template_name = 'student_list.html'
     paginate_by = 5
 
+    def get_queryset(self):
+        filter_version = self.request.GET.get('filter', '')
+        order = self.request.GET.get('orderby', '')
+        order_c = 'surname'
+        if order=='Student ID':
+            order_c='id'
+        elif order=='Name':
+            order_c='surname'
+        elif order=='Registration Date':
+            order_c='-registration_date'
+        elif order=='Times Present':
+            order_c='-roll_no'
+        new_context = Student.objects.filter(
+            program_version__icontains=filter_version
+        ).order_by(order_c)
+        return new_context
+
+    def get_context_data(self, **kwargs):
+        context = super(StudentListView, self).get_context_data(**kwargs)
+        context['filter'] = self.request.GET.get('filter', '')
+        context['orderby'] = self.request.GET.get('orderby', '')
+        context['versions'] = Student.objects.filter(program__icontains='Codegaminators').\
+            	exclude(program_version__isnull=True).exclude(program_version__exact='').\
+            	order_by('program_version').values('program_version').distinct()
+        return context
 
 
 @login_required

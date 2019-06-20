@@ -5,6 +5,14 @@ from django import forms
 from .models import Student
 from simple_search import search_form_factory
 
+from fractions import Fraction
+
+from camera_imagefield import CameraImageField
+from django import forms
+
+
+class MyForm(forms.Form):
+    picture = CameraImageField(aspect_ratio=Fraction(16, 9))
 
 
 class DateInputs(forms.DateInput):
@@ -21,10 +29,10 @@ class StudentRegistrationForm(ModelForm):
             'phone_no': TextInput(attrs={'placeholder': 'e.g 08052220001'}),
             'birthday': DateInputs(),
             'middlename': TextInput(attrs={'placeholder': 'Optional'}),
-
+            
             
         }
-
+        
 
 
 

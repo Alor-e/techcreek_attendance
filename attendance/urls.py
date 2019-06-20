@@ -34,4 +34,6 @@ urlpatterns = [
     path("ajax/program_version/", views2.get_program_version, name = 'get_program_version'),
     path("ajax/local_govt/", views2.get_local_govt, name = 'get_local_govt'),
     path("ajax/program_specific/", views2.get_program_specific, name = 'get_program_specific'),
+
+    path('test/<int:pk>', views2.image_test, name='test'),
 ]

@@ -4,6 +4,7 @@ from rest_framework.generics import ListAPIView
 from .serializers import StudentSerializers
 from .models import Student
 from .pagination import StandardResultsSetPagination
+from attendance.forms import MyForm
 
 def StudentList(request):
     total_number=Student.objects.all().count()
@@ -119,17 +120,25 @@ def get_program_specific(request):
         return JsonResponse(data, status = 200)
 
 
-def hotel_image_view(request): 
+
+from django.http import HttpResponse 
+from django.shortcuts import render, redirect 
+from .forms import MyForm
+  
+# Create your views here. 
+def image_test(request,pk): 
   
     if request.method == 'POST': 
-        form = HotelForm(request.POST, request.FILES) 
+        form = MyForm(request.POST, request.FILES) 
   
         if form.is_valid(): 
-            form.save() 
+            m = Student.objects.get(pk=pk)
+            m.picture = form.cleaned_data['image']
+            m.save()
             return redirect('success') 
     else: 
-        form = HotelForm() 
-    return render(request, 'hotel_image_form.html', {'form' : form}) 
+        form = MyForm() 
+    return render(request, 'student_registration_image.html', {'form' : form}) 
   
   
 def success(request): 
