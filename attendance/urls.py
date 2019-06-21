@@ -18,10 +18,6 @@ urlpatterns = [
     path('summary_kids/', views.attendance_stats_kids, name='kids_summary'),
     path('summary_dba/', views.attendance_stats_dba, name='dba_summary'),
 
-    path('student/order_by_name/', views.StudentListView_name_order.as_view(), name = 'student_list_name_order'),
-    path('student/order_by_date/', views.StudentListView_date_order.as_view(), name = 'student_list_date_order'),
-    path('student/order_by_present/', views.StudentListView_present_order.as_view(), name = 'student_list_present_order'),
-
     path('student/filter1', views.StudentListView_program_filter1.as_view(), name = 'student_list_program_filter1'),
     path('student/filter2', views.StudentListView_program_filter2.as_view(), name = 'student_list_program_filter2'),
     path('student/filter3', views.StudentListView_program_filter3.as_view(), name = 'student_list_program_filter3'),
@@ -35,5 +31,6 @@ urlpatterns = [
     path("ajax/local_govt/", views2.get_local_govt, name = 'get_local_govt'),
     path("ajax/program_specific/", views2.get_program_specific, name = 'get_program_specific'),
 
-    path('test/<int:pk>', views2.image_test, name='test'),
+    path('take_image/', views2.take_image, name='take_image'),
+    path('save_image/<int:pk>', views2.save_image, name='save_image'),
 ]

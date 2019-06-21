@@ -93,7 +93,7 @@ class StudentListView(generic.ListView):
         context = super(StudentListView, self).get_context_data(**kwargs)
         context['filter'] = self.request.GET.get('filter', '')
         context['orderby'] = self.request.GET.get('orderby', '')
-        context['versions'] = Student.objects.filter(program__icontains='Codegaminators').\
+        context['versions'] = Student.objects.\
             	exclude(program_version__isnull=True).exclude(program_version__exact='').\
             	order_by('program_version').values('program_version').distinct()
         return context
@@ -219,33 +219,89 @@ def attendance_stats_cgm(request):
     
     a = Attendance.objects.filter(linked_student__program__contains='Codegaminators').order_by('date').values('date').distinct()
     
-    student = Student.objects.filter(program__icontains='Codegaminators')
-    total = Attendance.objects.filter(linked_student__program__contains='Codegaminators').order_by('date').values('date').distinct().count()
-    context = {'a':a, 'student':student, 'total':total}
+    total = a.count()
+    filter_version = request.GET.get('filter', '')
+    order = request.GET.get('orderby', '')
+    order_c = 'surname'
+    if order=='Student ID':
+        order_c='id'
+    elif order=='Name':
+        order_c='surname'
+    elif order=='Registration Date':
+        order_c='-registration_date'
+    elif order=='Times Present':
+       order_c='-roll_no'
+    student = Student.objects.filter(program__icontains='Codegaminators', program_version__icontains=filter_version ).order_by(order_c)
+    versions = Student.objects.filter(program__icontains='Codegaminators').\
+            	exclude(program_version__isnull=True).exclude(program_version__exact='').\
+            	order_by('program_version').values('program_version').distinct()
+    context = {'a':a, 'student':student, 'total':total, 'versions':versions}
     return render(request, 'sp_table.html',context)
 
 @login_required
 def attendance_stats_ict(request):
     a = Attendance.objects.filter(linked_student__program__contains='ICT').order_by('date').values('date').distinct()
-    total = Attendance.objects.filter(linked_student__program__contains='ICT').order_by('date').values('date').distinct().count()
-    student = Student.objects.filter(program__contains='ICT') 
-    context = {'a':a, 'student':student, 'total':total}
+    total = a.count()
+    filter_version = request.GET.get('filter', '')
+    order = request.GET.get('orderby', '')
+    order_c = 'surname'
+    if order=='Student ID':
+        order_c='id'
+    elif order=='Name':
+        order_c='surname'
+    elif order=='Registration Date':
+        order_c='-registration_date'
+    elif order=='Times Present':
+       order_c='-roll_no'
+    student = Student.objects.filter(program__contains='ICT', program_version__icontains=filter_version ).order_by(order_c)
+    versions = Student.objects.filter(program__icontains='ICT').\
+            	exclude(program_version__isnull=True).exclude(program_version__exact='').\
+            	order_by('program_version').values('program_version').distinct()
+    context = {'a':a, 'student':student, 'total':total, 'versions':versions}
     return render(request, 'sp_table.html',context)
 
 @login_required
 def attendance_stats_kids(request):
     a = Attendance.objects.filter(linked_student__program__contains='kids').order_by('date').values('date').distinct()
-    total = Attendance.objects.filter(linked_student__program__contains='kids').order_by('date').values('date').distinct().count()
-    student = Student.objects.filter(program__contains='kids')
-    context = {'a':a, 'student':student, 'total':total}
+    total = a.count()
+    filter_version = request.GET.get('filter', '')
+    order = request.GET.get('orderby', '')
+    order_c = 'surname'
+    if order=='Student ID':
+        order_c='id'
+    elif order=='Name':
+        order_c='surname'
+    elif order=='Registration Date':
+        order_c='-registration_date'
+    elif order=='Times Present':
+       order_c='-roll_no'
+    student = Student.objects.filter(program__contains='kids', program_version__icontains=filter_version ).order_by(order_c)
+    versions = Student.objects.filter(program__icontains='kids').\
+            	exclude(program_version__isnull=True).exclude(program_version__exact='').\
+            	order_by('program_version').values('program_version').distinct()
+    context = {'a':a, 'student':student, 'total':total, 'versions':versions}
     return render(request, 'sp_table.html',context)
 
 @login_required
 def attendance_stats_dba(request):
     a = Attendance.objects.filter(linked_student__program__contains='DBA 500').order_by('date').values('date').distinct()
-    total = Attendance.objects.filter(linked_student__program__contains='DBA 500').order_by('date').values('date').distinct().count()
-    student = Student.objects.filter(program__contains='DBA 500')
-    context = {'a':a, 'student':student, 'total':total}
+    total = a.count()
+    filter_version = request.GET.get('filter', '')
+    order = request.GET.get('orderby', '')
+    order_c = 'surname'
+    if order=='Student ID':
+        order_c='id'
+    elif order=='Name':
+        order_c='surname'
+    elif order=='Registration Date':
+        order_c='-registration_date'
+    elif order=='Times Present':
+       order_c='-roll_no'
+    student = Student.objects.filter(program__contains='DBA 500', program_version__icontains=filter_version ).order_by(order_c)
+    versions = Student.objects.filter(program__icontains='DBA 500').\
+            	exclude(program_version__isnull=True).exclude(program_version__exact='').\
+            	order_by('program_version').values('program_version').distinct()
+    context = {'a':a, 'student':student, 'total':total, 'versions':versions}
     return render(request, 'sp_table.html',context)
 
 
@@ -258,19 +314,97 @@ class StudentListView_program_filter1(generic.ListView):
     template_name = 'student_list.html'
     paginate_by = 25
 
+    def get_queryset(self):
+        filter_version = self.request.GET.get('filter', '')
+        order = self.request.GET.get('orderby', '')
+        order_c = 'surname'
+        if order=='Student ID':
+            order_c='id'
+        elif order=='Name':
+            order_c='surname'
+        elif order=='Registration Date':
+            order_c='-registration_date'
+        elif order=='Times Present':
+            order_c='-roll_no'
+        new_context = Student.objects.filter(program__icontains='Codegaminators',
+            program_version__icontains=filter_version
+        ).order_by(order_c)
+        return new_context
+
+    def get_context_data(self, **kwargs):
+        context = super(StudentListView_program_filter1, self).get_context_data(**kwargs)
+        context['filter'] = self.request.GET.get('filter', '')
+        context['orderby'] = self.request.GET.get('orderby', '')
+        context['versions'] = Student.objects.filter(program__icontains='Codegaminators').\
+            	exclude(program_version__isnull=True).exclude(program_version__exact='').\
+            	order_by('program_version').values('program_version').distinct()
+        return context
+
 @method_decorator(login_required, name='dispatch')
 class StudentListView_program_filter2(generic.ListView):
-    queryset = Student.objects.filter(program__contains='ICT')
+    queryset = Student.objects.filter(program__icontains='ICT')
     context_object_name = 'student_list'
     template_name = 'student_list.html'
     paginate_by = 25
 
+    def get_queryset(self):
+        filter_version = self.request.GET.get('filter', '')
+        order = self.request.GET.get('orderby', '')
+        order_c = 'surname'
+        if order=='Student ID':
+            order_c='id'
+        elif order=='Name':
+            order_c='surname'
+        elif order=='Registration Date':
+            order_c='-registration_date'
+        elif order=='Times Present':
+            order_c='-roll_no'
+        new_context = Student.objects.filter(program__icontains='ICT',
+            program_version__icontains=filter_version
+        ).order_by(order_c)
+        return new_context
+
+    def get_context_data(self, **kwargs):
+        context = super(StudentListView_program_filter2, self).get_context_data(**kwargs)
+        context['filter'] = self.request.GET.get('filter', '')
+        context['orderby'] = self.request.GET.get('orderby', '')
+        context['versions'] = Student.objects.filter(program__icontains='ICT').\
+            	exclude(program_version__isnull=True).exclude(program_version__exact='').\
+            	order_by('program_version').values('program_version').distinct()
+        return context
+
 @method_decorator(login_required, name='dispatch')
 class StudentListView_program_filter3(generic.ListView):
-    queryset = Student.objects.filter(program__contains='kids')
+    queryset = Student.objects.filter(program__icontains='kids')
     context_object_name = 'student_list'
     template_name = 'student_list.html'
     paginate_by = 25
+
+    def get_queryset(self):
+        filter_version = self.request.GET.get('filter', '')
+        order = self.request.GET.get('orderby', '')
+        order_c = 'surname'
+        if order=='Student ID':
+            order_c='id'
+        elif order=='Name':
+            order_c='surname'
+        elif order=='Registration Date':
+            order_c='-registration_date'
+        elif order=='Times Present':
+            order_c='-roll_no'
+        new_context = Student.objects.filter(program__icontains='kids',
+            program_version__icontains=filter_version
+        ).order_by(order_c)
+        return new_context
+
+    def get_context_data(self, **kwargs):
+        context = super(StudentListView_program_filter3, self).get_context_data(**kwargs)
+        context['filter'] = self.request.GET.get('filter', '')
+        context['orderby'] = self.request.GET.get('orderby', '')
+        context['versions'] = Student.objects.filter(program__icontains='kids').\
+            	exclude(program_version__isnull=True).exclude(program_version__exact='').\
+            	order_by('program_version').values('program_version').distinct()
+        return context
 
 class StudentListView_program_filter4(generic.ListView):
     queryset = Student.objects.filter(program__contains='DBA 500')
@@ -278,26 +412,29 @@ class StudentListView_program_filter4(generic.ListView):
     template_name = 'student_list.html'
     paginate_by = 25
 
-@method_decorator(login_required, name='dispatch')
-class StudentListView_name_order(generic.ListView):
-    model = Student
-    context_object_name = 'student_list'
-    template_name = 'student_list.html'
-    paginate_by = 25
-    ordering = ['surname', 'firstname']
+    def get_queryset(self):
+        filter_version = self.request.GET.get('filter', '')
+        order = self.request.GET.get('orderby', '')
+        order_c = 'surname'
+        if order=='Student ID':
+            order_c='id'
+        elif order=='Name':
+            order_c='surname'
+        elif order=='Registration Date':
+            order_c='-registration_date'
+        elif order=='Times Present':
+            order_c='-roll_no'
+        new_context = Student.objects.filter(program__contains='DBA 500',
+            program_version__icontains=filter_version
+        ).order_by(order_c)
+        return new_context
 
-@method_decorator(login_required, name='dispatch')
-class StudentListView_date_order(generic.ListView):
-    model = Student
-    context_object_name = 'student_list'
-    template_name = 'student_list.html'
-    paginate_by = 25
-    ordering = ['-registration_date']
+    def get_context_data(self, **kwargs):
+        context = super(StudentListView_program_filter4, self).get_context_data(**kwargs)
+        context['filter'] = self.request.GET.get('filter', '')
+        context['orderby'] = self.request.GET.get('orderby', '')
+        context['versions'] = Student.objects.filter(program__icontains='DBA 500').\
+            	exclude(program_version__isnull=True).exclude(program_version__exact='').\
+            	order_by('program_version').values('program_version').distinct()
+        return context
 
-@method_decorator(login_required, name='dispatch')
-class StudentListView_present_order(generic.ListView):
-    model = Student
-    context_object_name = 'student_list'
-    template_name = 'student_list.html'
-    paginate_by = 25
-    ordering = ['-roll_no']

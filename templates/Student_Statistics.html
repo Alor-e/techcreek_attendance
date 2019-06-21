@@ -10,40 +10,11 @@
 {% endblock %}
 {% block content %}
 <div class="container-fluid" >
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-sm-6 col-6" id="total_number_l"> 
-                <div>
-                    Number of Students
-                </div>
-                <div id="total_number">
-                    1000
-                </div>
-            </div>
-            <div class="col-sm-3 col-3" id="female_l"> 
-                <div>
-                    Number of Students
-                </div>
-                <div id="female">
-                    
-                </div>
-            </div>
-            <div class="col-sm-3 col-3" id="male_l"> 
-                <div>
-                    Number of Students
-                </div>
-                <div id="male">
-                    
-                    
-                </div>
-            </div>
-        </div>
-
-    </div>
+    
 
     <div class="site_filter">
-        <div class="container-fluid">
-            <div class="row justify-content-center m-0 p-0">
+        <div class="container-fluid pt-4 px-0">
+            <div class="row justify-content-center m-0 py-3 border " style="border-radius: 5px">
                 <div class="col-sm-2 col-2">
                     <div class="form-group">
                         <label for="program">Program</label>
@@ -63,7 +34,7 @@
                 </div>
                 <div class="col-sm-2 col-2">
                     <div class="form-group">
-                        <label for="program_specific">Program Specific</label>
+                        <label for="program_specific">Sub Program</label>
                         <select class="form-control" id="program_specific" 
                             url = "{%url 'get_program_specific' %}">
                             <option value='all' selected>All</option>
@@ -103,7 +74,7 @@
                 </div>
                 <div class="col-sm-1 col-1">
                     <div class="row justify-content-center align-self-center"
-                        style="color:white; margin-top:30px;">
+                        style="color:white; margin-top:5px;">
                         <a class="btn btn-secondary" id="display_all">Display all</a>
                     </div>
                 </div>
@@ -111,6 +82,36 @@
         </div>
     </div>
     <br />
+    <div class="container-fluid">
+            <div class="row justify-content-center border pt-2 font-weight-light" style="border-radius: 5px; border-width: 3px;">
+                <div class="col-sm-4 col-4 text-center font-weight-light" id="total_number_l"> 
+                    <div>
+                       <h3 class="font-weight-light">Total Number of Students</h3> 
+                    </div>
+                    <div id="total_number">
+                        <h3 id="total_number"></h3>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-4 text-center" id="female_l"> 
+                    <div>
+                        <h4 class="font-weight-light">Female Students</h4>
+                    </div>
+                    <div id="female">
+                        <h4></h4>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-4 text-center" id="male_l"> 
+                    <div>
+                        <h4 class="font-weight-light">Male Students</h4>
+                    </div>
+                    <div  id="male">
+                        <h4 ></h4>
+                        
+                    </div>
+                </div>
+            </div>
+    
+        </div>
     <section>
         <div class="container-fluid">
             <div id = "result-count" class="text-right">

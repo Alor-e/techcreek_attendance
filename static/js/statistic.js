@@ -236,9 +236,9 @@ function putTableData(result) {
     // displaying result count
 
     $("#result-count span").html(result["count"]);
-    $("#total_number").html(result["count"]);
-    $("#female").html(female_count);
-    $("#male").html(male_count);
+    $("#total_number h3").html(result["count"]);
+    $("#female h4").html(female_count);
+    $("#male h4").html(male_count);
 }
 
 function getAPIData() {

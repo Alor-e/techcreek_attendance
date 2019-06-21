@@ -124,22 +124,17 @@ def get_program_specific(request):
 from django.http import HttpResponse 
 from django.shortcuts import render, redirect 
 from .forms import MyForm
-  
+from django.views.decorators.csrf import csrf_exempt  
 # Create your views here. 
-def image_test(request,pk): 
-  
-    if request.method == 'POST': 
-        form = MyForm(request.POST, request.FILES) 
-  
-        if form.is_valid(): 
-            m = Student.objects.get(pk=pk)
-            m.picture = form.cleaned_data['image']
-            m.save()
-            return redirect('success') 
-    else: 
-        form = MyForm() 
-    return render(request, 'student_registration_image.html', {'form' : form}) 
-  
-  
-def success(request): 
-    return HttpResponse('successfuly uploaded') 
+def take_image(request): 
+    return render(request, "student_registration_image.html")
+
+@csrf_exempt  
+def save_image(request, pk): 
+    if request.method == 'POST':
+        passfile = request.FILES.get('file')
+        s = Student.objects.get(pk=pk)
+        s.picture = passfile
+        s.save()
+        return HttpResponse('image upload success')
+    return render(request, "student_registration_image.html")
