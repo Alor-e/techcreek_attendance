@@ -173,13 +173,13 @@
             <div class="col-9 pt-2 pb-4 text-center px-auto">
                 <span class=" font-weight-light mb-0" id="resp_text_4">
                     {% if page_obj.has_previous %}
-                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="hgh">Previous</a>
+                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}&filter={{filter}}&orderby={{orderby}}" class="hgh">Previous</a>
                     {% endif %}
                     <span class="page-current">
                         Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                     </span>
                     {% if page_obj.has_next %}
-                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="hgh">Next</a>
+                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}&filter={{filter}}&orderby={{orderby}}" class="hgh">Next</a>
                     {% endif %}
                 </span>
             </div>

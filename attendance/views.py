@@ -67,10 +67,10 @@ def take_attendance_search(request):
 
 @method_decorator(login_required, name='dispatch')
 class StudentListView(generic.ListView):
-    model = Student
+   
     context_object_name = 'student_list'
     template_name = 'student_list.html'
-    paginate_by = 5
+    paginate_by = 3
 
     def get_queryset(self):
         filter_version = self.request.GET.get('filter', '')
