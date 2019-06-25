@@ -10,7 +10,8 @@
 <div class="container">
   <div id="my_camera"></div>
   <input type=button value="Take Snapshot" onClick="take_snapshot()">
-  <div id="results" name="image_cam"></div>
+  <form action="" method="post" class="dropzone" enctype="multipart/form-data">
+  <div id="results" name="image_cam"></div></form>
 
   <form action="" method="post" class="dropzone" enctype="multipart/form-data">
     {% csrf_token %}
@@ -63,6 +64,7 @@ Webcam.set({
  
  var base64image = document.getElementById("imageprev").src;
 
+ 
  Webcam.upload( base64image, '/attendance/save_image/1', function(code, text) {
   
  });

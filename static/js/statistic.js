@@ -328,7 +328,7 @@ function getprogram() {
         data: {},
         success: function (result) {
 
-            program_option = "<option value='all' selected>All program</option>";
+            program_option = "<option value='all' selected>All Programs</option>";
             $.each(result["program"], function (a, b) {
                 program_option += "<option>" + b + "</option>"
             });
@@ -373,7 +373,7 @@ function getprogram_version(program) {
     let url = $("#program_version").attr("url");
     // makes request to getprogram_version(request) method in views
 
-    let program_version_option = "<option value='all' selected>All program_versions</option>";
+    let program_version_option = "<option value='all' selected>All Program Versions</option>";
     $.ajax({
         method: 'GET',
         url: url,
@@ -400,7 +400,7 @@ function getprogram_specific(program) {
     let url = $("#program_specific").attr("url");
     // makes request to getprogram_version(request) method in views
 
-    let program_specific_option = "<option value='all' selected>All program_specifics</option>";
+    let program_specific_option = "<option value='all' selected>All Program Specifics</option>";
     $.ajax({
         method: 'GET',
         url: url,
@@ -427,7 +427,7 @@ function getlocal_govt(state_of_origin) {
     let url = $("#local_govt").attr("url");
     // makes request to getlocal_govt(request) method in views
 
-    let local_govt_option = "<option value='all' selected>All local_govts</option>";
+    let local_govt_option = "<option value='all' selected>All Local Governments</option>";
     $.ajax({
         method: 'GET',
         url: url,

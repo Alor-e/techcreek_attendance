@@ -87,7 +87,7 @@
                 </div>
                 <div class="pt-4 pb-4">
                 </div>
-                <div class="card pt-3 pb-3 mr-0 pl-3" style="width: 11.7vw" id="sticky_filter">
+                <div class="card pt-3 pb-3 mr-0 pl-3" id="sticky_filter">
 
 
                     <div >
@@ -99,11 +99,11 @@
                         <h5 class=" font-weight-light mb-0 pb-1" id="resp_text_8"> <a class="hgh" href="{% url 'student_list_program_filter4' %}">DBA 500</a></h5>
                     </div>
                 
-                    <div>
+                    <div class="row pr-3 pl-3 pb-0">
                             <form method="get" >
                         
                         
-                                    <div class="form-group">
+                                    <div class="form-group mb-1">
                                         <label for="filter">Program Version</label>
                                         <select class="form-control" name="filter" id="filter">
                                             
@@ -116,10 +116,11 @@
                                         </select>
                                       
                                     </div>
-                                    <div class="form-group">
-                                            <label for="orderby">Order By</label>
+                                    <div class="form-group mb-2 pb-1 pt-1">
+                                            <label for="orderby" class="py-0">Order By</label>
                                             <select class="form-control" name="orderby" id="orderby">
-                                                
+                                                <option selected="true"
+                                                disabled="disabled" value = "none">Choose option</option>
                                                 <option>Student ID</option>
                                                 <option>Name</option>
                                                 <option>Registration Date</option>
@@ -127,7 +128,9 @@
                                               
                                             </select>
                                     </div>
-                                    <p><input type="submit" name="submit" value="submit"/></p>
+                                    <div class="row justify-content-center pt-1">
+                                        <button type="submit" class="btn btn-outline-secondary py-1 align-self-center" >Submit</button>
+                                    </div>
                                 </form>
                         
                     </div>
@@ -138,8 +141,8 @@
         </div> 
         {% else %}
         <div class="row justify-content-center">
-                <div class="col-9">
-                    No students
+                <div class="col-9 p-4">
+                    <h2 class="display-4">No students</h2>
                 </div>
 
                 <div class="col-3 pl-5 pt-5">

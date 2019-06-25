@@ -11,7 +11,7 @@
             <div class="pt-5">
             <div class="pt-5"> 
                 <h1 class="text-center font-weight-light">Easy, Simple Attendance System</h1>
-                <p class="text-center font-weight-light mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.
+                <p class="text-center font-weight-light mb-0">Register students, take attendance, view attendance information and other student data. Get the data presented in an organised format.
                 </p>
                 
                 {% if user.is_authenticated %}
@@ -49,12 +49,19 @@
                 <div class="pt-5">
                 <div class="pt-5"> 
                     <h1 class="text-center font-weight-light">Easy, Simple Attendance System</h1>
-                    <p class="text-center font-weight-light mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.
+                    <p class="text-center font-weight-light mb-0">For recording student data, taking attendance quickly and getting data in an organized manner.
                     </p>
-                    <p class="text-center font-weight-light"> Get started by signing in. You won't be able to use this system if you have not.</p>
-                    <div class="row justify-content-center ">
-                        <a href="{% url 'login'%}" class="btn btn-secondary font-weight-light ">Go Sign In</a>
-                    </div>
+                    {% if user.is_authenticated %}
+                <p class="text-center font-weight-light"> Thanks for signing in and welcome, {{user.first_name|capfirst}}</p>
+                <div class="row justify-content-center ">
+                        <a href="{% url 'home'%}" class="btn btn-secondary font-weight-light ">Get Started</a>
+                </div>  
+                    {% else %}
+                <p class="text-center font-weight-light"> Get started by signing in. You won't be able to use this system if you have not.</p>
+                <div class="row justify-content-center ">
+                    <a href="{% url 'login'%}" class="btn btn-secondary font-weight-light ">Go Sign In</a>
+                </div>
+                    {% endif %}
                         
                 </div>
             </div>
@@ -71,7 +78,7 @@
                  <div class="pt-5">
                  <div class="pt-5"> 
                      <h1 class="text-center font-weight-light">Easy, Simple Attendance System</h1>
-                     <p class="text-center font-weight-light mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.
+                     <p class="text-center font-weight-light mb-0">For recording student data, taking attendance quickly and getting data in an organized manner.
                      </p>
                      
                      {% if user.is_authenticated %}
