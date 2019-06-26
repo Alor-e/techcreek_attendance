@@ -161,16 +161,26 @@ def registration_complete(request, pk):
     context = {'identity':identity}
     return render(request, 'student_reg_complete.html', context) 
 
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 @login_required
 def search(request):
     form = SearchForm(request.GET or {})
+    q = request.GET.get('q', '')
     if form.is_valid() and form.has_changed():
         student_list = form.get_queryset()
     else:
         student_list = Student.objects.none()
-    context= {'form':form, 'student_list':student_list}
+    
+    page = request.GET.get('page', 1)
+    paginator = Paginator(student_list, 5)
+    try:
+        student_list = paginator.page(page)
+    except PageNotAnInteger:
+        student_list = paginator.page(1)
+    except EmptyPage:
+        student_list = paginator.page(paginator.num_pages)
+    context= {'form':form, 'student_list':student_list, 'q':q}
     return render(request, 'search.html', context)
 
 

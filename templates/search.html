@@ -87,22 +87,22 @@
 
         {% else %}
             
-            
+         <h2 class="font-weight-light text-center pt-4">No Results found</h2>
 
         {% endif %}
 
         </div>
-        {% if is_paginated %}
-            <div class="col-9 pt-2 pb-4 text-center px-auto">
+        {% if student_list.has_other_pages %}
+            <div class="col-12 pt-2 pb-4 text-center px-auto">
                 <span class=" font-weight-light mb-0" id="resp_text_4">
-                    {% if page_obj.has_previous %}
-                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="hgh">Previous</a>
+                    {% if student_list.has_previous %}
+                        <a href="{{ request.path }}?page={{ student_list.previous_page_number }}&q={{q}}" class="hgh">Previous</a>
                     {% endif %}
                     <span class="page-current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        Page {{ student_list.number }} of {{ student_list.paginator.num_pages }}.
                     </span>
-                    {% if page_obj.has_next %}
-                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="hgh">Next</a>
+                    {% if student_list.has_next %}
+                        <a href="{{ request.path }}?page={{ student_list.next_page_number }}&q={{q}}" class="hgh">Next</a>
                     {% endif %}
                 </span>
             </div>
