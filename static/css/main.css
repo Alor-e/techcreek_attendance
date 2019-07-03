@@ -244,11 +244,21 @@ html, body, section, div.left-half, div.right-half, div.img {
   }
 }
 
+
 #list_card{
   border-width: 0vw;
-  border-left-width: .13vw;
+  border-left-width: .16vw;
   border-left-color: rgb(167, 212, 255);
   
+}
+
+@media (min-width: 1900px) {
+  #list_card{
+    border-width: 0vw;
+    border-left-width: .13vw;
+    border-left-color: rgb(167, 212, 255);
+    
+  }
 }
 
 
@@ -325,13 +335,13 @@ html, body, section, div.left-half, div.right-half, div.img {
 }
 
 @media (min-width: 1200px) {
-  .container-fluid{
+  #stat-container{
       max-width: 98%;
   }
 }
 
 @media (min-width: 1900px) {
-  .container-fluid{
+  #stat-container{
       max-width: 90%;
   }
 }
@@ -344,12 +354,49 @@ html, body, section, div.left-half, div.right-half, div.img {
 
 @media (min-width: 1900px) {
   #sticky_filter{
-      max-width: 90%;
+      max-width: 95%;
+  }
+}
+
+
+@media (min-width: 1900px) {
+  #sticky-row{
+      min-width: 110%
   }
 }
 
 @media (min-width: 1900px) {
-  #sticky_filter{
-      max-width: 90%;
+  #sticky-but{
+      margin-left: 6%;
+  }
+}
+
+
+
+#limg{
+  max-width: 100%;
+  height: 6.1rem;
+  object-fit: cover;
+}
+
+@media (min-width: 1900px) {
+  #limg{
+    max-width: 100%;
+    height: 6.1rem;
+    object-fit: cover;
+  }
+}
+
+#limg3{
+  max-width: 96%;
+  height: 6.3rem;
+  object-fit: cover;
+}
+
+@media (min-width: 1900px) {
+  #limg3{
+    max-width: 100%;
+    height: 6.3rem;
+    object-fit: cover;
   }
 }

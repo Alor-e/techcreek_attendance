@@ -82,7 +82,7 @@ class Student(models.Model):
     registration_date = models.DateTimeField( auto_now=False, auto_now_add=True)
     unique_id = models.CharField(max_length=15, unique=True, null=True, blank=True)
     roll_no = models.PositiveSmallIntegerField('Number of times present',null=True, blank=True, default=0)
-    already_taken = models.BooleanField(default=False, null=False, blank=False)
+    already_taken = models.BooleanField(default=False)
     picture = models.ImageField(upload_to = 'media/', null=True, blank=True )
 
 

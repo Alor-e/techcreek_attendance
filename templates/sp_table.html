@@ -3,10 +3,19 @@
 
 {% block content %}
 <div class="container-fluid" id="cn22">
-        <form method="get">
-                        
-                        
-                <div class="form-group">
+    <div class="row pt-4">    
+        <div class="col-9">
+            <h1 class="text-justify mb-1" id="resp_text_7">Students Registered on the System</h1>
+                <p class="text-justify font-weight-light mb-0" id="resp_text_4">Below are the students registered on this attendance system. 
+                    To go to each students profile click on their unique number or follow the 'view more link'
+                    You can filter by using the area to the left
+                </p>
+        </div> 
+    </div>   
+    <form method="get">
+                  
+        <div class="form-row">
+                <div class="form-group col-2">
                     <label for="filter">Program Version</label>
                     <select class="form-control" name="filter" id="filter">
                         
@@ -19,7 +28,7 @@
                     </select>
                   
                 </div>
-                <div class="form-group">
+                <div class="form-group col-2">
                         <label for="orderby">Order By</label>
                         <select class="form-control" name="orderby" id="orderby">
                             <option selected="true"
@@ -31,8 +40,14 @@
                           
                         </select>
                 </div>
-                <p><input type="submit" name="submit" value="submit"/></p>
-            </form>
+                <div class="form-group col-1 pt-4 mt-2">
+                    
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </div>
+        </div>
+    </form>
+    
+            
     <div class="table">
         <table class="table-responsive table-bordered table-striped table-hover" id="hgh2">    
             

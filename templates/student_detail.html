@@ -4,9 +4,24 @@
 <div class="backg-img3">
 <div class="container p-4">
     <div class="row justify-content-center">
-        <div class="col-9 card bg-transparent shadow-sm px-2" style="border-radius: 1%">
+        <div class="col-9 card bg-transparent shadow-sm px-2 pb-3" style="border-radius: 10px">
+                        <div class="col-2 text-center pt-3" id="img-top">
+                                    
+                                {% if student.picture %}
+                                        
+                                <div class="ml-2"> <img src="{{ student.picture.url }}" class="rounded-circle" id="limg3"></div>
+                                        
+                                {% else %}
+                                        
+                                <div class="">{% load static %} <img src="{% static '../static/images/icons8-customer-64.png' %}" class="rounded-circle border" id="limg2"></div>
+                                           
+                                {% endif %}
+                                            
+                                        
+                        </div>
             <div class=" bg-transparent border-bottom-0 text-justify font-weight-light pl-4">
             <h1 class="font-weight-light pt-3">{{student.surname}} {{student.firstname}} {% if student.middlename %}{{student.middlename}},    {% endif %} <span class="small_text">ID = </span> {{student.id}}</h1>
+            
             </div>
         
             <div class="bg-transparent font-weight-light pl-4"> 
@@ -87,7 +102,7 @@
                         {% if student.already_taken == True %}
                             <p>Attendance has already been taken for {{student.surname}} {{student.firstname}}</p>
                         {% else %}
-                        <div class="pl-5 ml-2" id="list_div">
+                        <div class="pl-0 ml-0 pt-1" id="list_div">
                                 <form action="{% url 'take_attendance' student.id %}" method="POST">
                                     {% csrf_token %}
                                     <button class="btn btn-secondary px-1" type="submit" id="resp_text_4a">Take Attendance</button>
