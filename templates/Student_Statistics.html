@@ -17,7 +17,7 @@
             <div class="row justify-content-center m-0 py-3 border " style="border-radius: 5px">
                 <div class="col-sm-2 col-2">
                     <div class="form-group">
-                        <label for="program">Program</label>
+                        <label for="program">Programs</label>
                         <select class="form-control" id="program" 
                             url = "{%url 'get_program' %}">
                         </select>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-sm-2 col-2">
                     <div class="form-group">
-                        <label for="program_version">Program Version</label>
+                        <label for="program_version">Program Versions</label>
                         <select class="form-control" id="program_version" 
                             url = "{%url 'get_program_version' %}">
                             <option value='all' selected>All</option>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-sm-2 col-2">
                     <div class="form-group">
-                        <label for="program_specific">Sub Program</label>
+                        <label for="program_specific">Courses</label>
                         <select class="form-control" id="program_specific" 
                             url = "{%url 'get_program_specific' %}">
                             <option value='all' selected>All</option>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-sm-2 col-2">
                     <div class="form-group">
-                        <label for="state_of_origin">State</label>
+                        <label for="state_of_origin">States</label>
                         <select class="form-control" id="state_of_origin" 
                             url = "{%url 'get_state_of_origin' %}">
                         </select>
@@ -53,7 +53,7 @@
                 
                 <div class="col-sm-2 col-2">
                     <div class="form-group">
-                        <label for="local_govt">Local Government</label>
+                        <label for="local_govt">Local Government Areas</label>
                         <select class="form-control" id="local_govt" url = "{%url 'get_local_govt' %}">
                             <option value='all' selected>All Regions</option>
                         </select>
@@ -65,7 +65,7 @@
                         <label for="sort_by">Sort By</label>
                         <select class="form-control" id="sort_by">
                             <option selected="true"
-                            disabled="disabled" value = "none">Choose option</option>
+                            disabled="disabled" value = "none">Choose an option</option>
                             <option value='unique_id'>ID Number</option>
                             <option value='registration_date'>Date Registered</option>
                             <option value='roll_no'>Times Present</option>
@@ -83,35 +83,35 @@
     </div>
     <br />
     <div class="container-fluid" id="stat-container">
-            <div class="row justify-content-center border pt-2 font-weight-light" style="border-radius: 5px; border-width: 3px;">
-                <div class="col-sm-4 col-4 text-center font-weight-light" id="total_number_l"> 
-                    <div>
-                       <h3 class="font-weight-light">Total Number of Students</h3> 
-                    </div>
-                    <div id="total_number">
-                        <h3 id="total_number"></h3>
-                    </div>
+        <div class="row justify-content-center border pt-2 font-weight-light" style="border-radius: 5px; border-width: 3px;">
+            <div class="col-sm-4 col-4 text-center font-weight-light" id="total_number_l"> 
+                <div>
+                    <h3 class="font-weight-light">Total Number of Students</h3> 
                 </div>
-                <div class="col-sm-4 col-4 text-center" id="female_l"> 
-                    <div>
-                        <h4 class="font-weight-light">Female Students</h4>
-                    </div>
-                    <div id="female">
-                        <h4></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-4 text-center" id="male_l"> 
-                    <div>
-                        <h4 class="font-weight-light">Male Students</h4>
-                    </div>
-                    <div  id="male">
-                        <h4 ></h4>
-                        
-                    </div>
+                <div id="total_number">
+                    <h3 id="total_number"></h3>
                 </div>
             </div>
-    
+            <div class="col-sm-4 col-4 text-center" id="female_l"> 
+                <div>
+                    <h4 class="font-weight-light">Female Students</h4>
+                </div>
+                <div id="female">
+                    <h4></h4>
+                </div>
+            </div>
+            <div class="col-sm-4 col-4 text-center" id="male_l"> 
+                <div>
+                    <h4 class="font-weight-light">Male Students</h4>
+                </div>
+                <div  id="male">
+                    <h4 ></h4>
+                    
+                </div>
+            </div>
         </div>
+    
+    </div>
     <section>
         <div class="container-fluid" id="stat-container">
             <div id = "result-count" class="text-right">
@@ -134,6 +134,7 @@
                                     <th data-field="gender">Gender</th>
                                     <th data-field="program">Program</th>
                                     <th data-field="program_version">Program Version</th>
+                                    <th data-field="program_specific">Course</th>
                                     <th data-field="roll_no">Times Present</th>
                                     <th data-field="state_of_origin">State of Origin</th>
                                     <th data-field="local_govt">Local Government Area</th>
@@ -146,21 +147,32 @@
                     </table>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <nav aria-label="navigation">
+            <div class="row ">
+                <div class="col-5 p-0">
+                        <button class="btn btn-outline-primary ml-0 mr-4" onclick="exportTableToExcel('list_data')">Export to Excel File</button>
+                        <button class="btn btn-outline-primary" id="download">Export to CSV File</button>
+                
+                </div>
+                
+                <div class="col-4 p-0" aria-label="navigation">
                     <ul class="pagination">
                         <li class="page-item px-4">
                             <button class="btn btn-primary page-link" id="previous">Previous</button>
                         </li>
+                        <div class="border"></div>
                         <li class="page-item pull-right px-4">
                             <button class="btn btn-primary page-link" id="next">Next</button>
                         </li>
                     </ul>
-                </nav>
+                </div>
+                
+                
             </div>
-            <button class="btn btn-primary" onclick="exportTableToExcel('list_data')">Export to Excel File</button>
-            <button class="btn btn-primary" id="download">Export to CSV File</button>
+            
+            
         </div>
+        
+        
     </section>
 </div>
 {% endblock %}

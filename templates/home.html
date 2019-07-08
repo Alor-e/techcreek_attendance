@@ -4,10 +4,10 @@
 
 {% block content %}
 <div class="backg-img4">
-<div class="container pt-5 pb-5" >
-   <div class="row justify-content-center mt-5 pb-5" >
+<div class="land-main container home-main" >
+   <div class="row justify-content-center mt-5 " >
     
-        <div class="col-4 text-justify">
+        <div class="col-4 text-justify ">
             <div class="pt-5">
             <div class="pt-5"> 
                 <h1 class="text-center font-weight-light">Easy, Simple Attendance System</h1>
@@ -17,7 +17,7 @@
                 {% if user.is_authenticated %}
                 <p class="text-center font-weight-light"> Thanks for signing in and welcome, {{user.first_name|capfirst}}</p>
                 <div class="row justify-content-center ">
-                        <a href="{% url 'home'%}" class="btn btn-secondary font-weight-light ">Get Started</a>
+                        <a href="{% url 'take_attendance_search'%}" class="btn btn-secondary font-weight-light ">Get Started</a>
                 </div>  
                 {% else %}
                 <p class="text-center font-weight-light"> Get started by signing in. You won't be able to use this system if you have not.</p>
@@ -38,11 +38,11 @@
     
 </div>
 
-<div id="section_1" class='pb-5'>
-<div class="container pt-5">
-    <div class="row justify-content-center mt-5">
+<div id="section_1" class=''>
+<div class="land-main2 container home-main">
+    <div class="row justify-content-center mt-5 pt-3">
         <div class="col-8">
-            <img src="../static/images/landing_2.png" alt="" class="img-fluid img-absolute">
+            <img src="../static/images/laptop_image.png" alt="" class="img-fluid img-absolute">
         </div>
         
         <div class="col-4 text-justify pt-3">
@@ -68,10 +68,24 @@
         </div>    
         
     </div>
+    
 </div>
+<div>
+
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 1440 126" style="enable-background:new 0 0 1440 126;" xml:space="preserve" >
+   <style type="text/css">
+       .st0{fill:rgb(119, 124, 131);}
+   </style>
+   <title>Rectangle 3</title>
+   <desc>Created with Sketch.</desc>
+   <path class="fsvg" d="M685.6,38.8C418.7-11.1,170.2,9.9,0,30v96h1440V30C1252.7,52.2,1010,99.4,685.6,38.8z"/>
+   </svg>
 </div>
 
-<div class="container pt-5">
+</div>
+
+<!-- <div class="container pt-5">
         <div class="row justify-content-center mt-5 pb-5">
          
              <div class="col-4 text-justify">
@@ -105,6 +119,6 @@
          
      </div>
 
-</div>     
+</div>      -->
 {% endblock content %}
-    
+

@@ -192,6 +192,7 @@ function putTableData(result) {
                 "<td>" + b.gender + "</td>" +
                 "<td>" + b.program + "</td>" +
                 "<td>" + b.program_version + "</td>" +
+                "<td>" + b.program_specific + "</td>" +
                 "<td>" + b.roll_no + "</td>" +
                 "<td>" + b.state_of_origin + "</td>" +
                 "<td>" + b.local_govt + "</td>" +
@@ -400,7 +401,7 @@ function getprogram_specific(program) {
     let url = $("#program_specific").attr("url");
     // makes request to getprogram_version(request) method in views
 
-    let program_specific_option = "<option value='all' selected>All Program Specifics</option>";
+    let program_specific_option = "<option value='all' selected>All Courses</option>";
     $.ajax({
         method: 'GET',
         url: url,

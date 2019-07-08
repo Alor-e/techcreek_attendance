@@ -1,16 +1,40 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300&display=swap');
 
-select {
+/* select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: url("../../static/images/down-arrow.png") right / 11px no-repeat #fff;
   background-position-x: right .75rem;
   
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(dropdown.ico) right / 20px no-repeat #fff;
+  padding-right: 20px;
+} */
+
+@supports (-moz-appearance:none) {
+
+  SELECT
+  {
+  -moz-appearance: none !important;
+  background: transparent url('data:image/gif;base64,R0lGODlhBgAGAKEDAFVVVX9/f9TU1CgmNyH5BAEKAAMALAAAAAAGAAYAAAIODA4hCDKWxlhNvmCnGwUAOw==') right center no-repeat !important;
+  background-position: calc(100% - 5px) center !important;
+  }
 
 }
 
+
+/* select {
+  -moz-appearance: listbox;
+  text-indent: 0.01px;
+  text-overflow: '';
+} */
 
 html, body, section, div.left-half, div.right-half, div.img {
     height: 100vh;
@@ -212,8 +236,8 @@ html, body, section, div.left-half, div.right-half, div.img {
   min-height: 92vh;
   
   background-image: url("../../static/images/developers-bg.png");
-  background-position: right;
-  background-repeat: repeat;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: 100vw;
   background-color: rgba(241, 247, 255, 0);
   background-blend-mode: color;
@@ -227,20 +251,23 @@ html, body, section, div.left-half, div.right-half, div.img {
 .backg-img4{
   margin: 0%;
   background-image: url("../../static/images/Bubbles.png");
-  background-position-x: 45%;
-  background-position-y: 45%;
+  background-position-x: 38%;
+  background-position-y: 13%;
   background-repeat: no-repeat;
-  background-size: 129vw;
-  background-color: rgba(241, 247, 255, 0.24);
+  background-size: 130vw;
+  background-color: rgba(241, 247, 255, 0.466);
   background-blend-mode: color;
 }  
 
 @media only screen and (min-width: 1900px) {
   .backg-img4{
     background-image: url("../../static/images/Bubbles.png");
-    background-position: 0%;
+    background-position-x: 25%;
+    background-position-y:15%;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100w;
+    background-color: rgba(241, 247, 255, 0.336);
+    background-blend-mode: color;
   }
 }
 
@@ -272,6 +299,14 @@ html, body, section, div.left-half, div.right-half, div.img {
   background-size: cover;
   background-color:  rgba(214, 221, 228, 0.164);
   background-blend-mode: color;
+  
+}
+
+.fsvg{
+  
+  fill: rgb(39, 39, 39);
+  fill: url("../../static/images/Bubbles.png");
+  fill: rgb(39, 39, 39);
   
 }
 
@@ -347,6 +382,18 @@ html, body, section, div.left-half, div.right-half, div.img {
 }
 
 @media (min-width: 1200px) {
+  #stat-container2{
+      max-width: 100%;
+  }
+}
+
+@media (min-width: 1900px) {
+  #stat-container2{
+      max-width: 91.7%;
+  }
+}
+
+@media (min-width: 1200px) {
   #sticky_filter{
       max-width: 87%;
   }
@@ -399,4 +446,35 @@ html, body, section, div.left-half, div.right-half, div.img {
     height: 6.3rem;
     object-fit: cover;
   }
+}
+
+.land-main{
+  height: 95vh;
+}
+
+.land-main2{
+  height: 85vh;
+}
+
+.home-main{
+  padding-top: 5.7%;
+}
+
+@media (max-width: 1440px) {
+  .home-main{
+    padding-top: 2.2%;
+  }
+
+}
+
+@media (min-width: 1900px) {
+  .home-main2{
+    padding-top: 2.2%;
+  }
+
+}
+
+.home-footer{
+  margin: 0%;
+  padding: 0%;
 }
