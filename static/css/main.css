@@ -291,8 +291,8 @@ html, body, section, div.left-half, div.right-half, div.img {
 
 .take_body{
   margin: 0%;
-  min-height: 92vh;
-  max-height: 92vh;
+  min-height: 93vh;
+  max-height: 93vh;
   background-image: url("../../static/images/stu_search2.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -304,9 +304,8 @@ html, body, section, div.left-half, div.right-half, div.img {
 
 .fsvg{
   
-  fill: rgb(39, 39, 39);
   fill: url("../../static/images/Bubbles.png");
-  fill: rgb(39, 39, 39);
+  fill: rgb(53, 53, 58);
   
 }
 
@@ -477,4 +476,76 @@ html, body, section, div.left-half, div.right-half, div.img {
 .home-footer{
   margin: 0%;
   padding: 0%;
+}
+
+.footer_text{
+  color: #dfdfdf;
+  position: absolute;
+  top: 191vh;
+  left: 10%;
+  font-size: 2vw;
+}
+
+.footer_sub1{
+  color: #dfdfdf;
+  position: absolute;
+  top: 196.5vh;
+  left: 10%;
+  font-size:.8vw;
+}
+
+.footer_sub2{
+  color: #dfdfdf;
+  position: absolute;
+  top: 199vh;
+  left: 10%;
+  font-size:.8vw;
+}
+
+:root{
+  --dist: 54.5%;
+}
+
+.footer_sub3{
+  color: #dfdfdf;
+  position: absolute;
+  top: 198vh;
+  left: calc(var(--dist) + 0%);
+  font-size:1.5vw;
+}
+
+.footer_sub4{
+  color: #dfdfdf;
+  position: absolute;
+  top: 198vh;
+  left: calc(var(--dist) + 2.5%);
+  font-size:1.5vw;
+}
+
+.footer_sub5{
+  color: #dfdfdf;
+  position: absolute;
+  top: 198vh;
+  left: calc(var(--dist) + 5%);
+  font-size:1.5vw;
+}
+
+.footer_sub6{
+  color: #dfdfdf;
+  position: absolute;
+  top: 198vh;
+  left: calc(var(--dist) + 7.5%);
+  font-size:1.5vw;
+}
+
+.footer_sub7{
+  color: #dfdfdf;
+  position: absolute;
+  top: 198.7vh;
+  left: 75%;
+  font-size:.9vw;
+}
+
+#cn22{
+  width: 98%;
 }
