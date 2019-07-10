@@ -428,7 +428,7 @@ function getlocal_govt(state_of_origin) {
     let url = $("#local_govt").attr("url");
     // makes request to getlocal_govt(request) method in views
 
-    let local_govt_option = "<option value='all' selected>All Local Governments</option>";
+    let local_govt_option = "<option value='all' selected>All LGAs</option>";
     $.ajax({
         method: 'GET',
         url: url,

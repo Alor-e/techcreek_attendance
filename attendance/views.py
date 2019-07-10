@@ -70,7 +70,7 @@ class StudentListView(generic.ListView):
    
     context_object_name = 'student_list'
     template_name = 'student_list.html'
-    paginate_by = 3
+    paginate_by = 10
 
     def get_queryset(self):
         filter_version = self.request.GET.get('filter', '')

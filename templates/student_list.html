@@ -1,29 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="backg-img3">
+<div class="backg-img6">
     <div class="container" style="width:100%">
 
         {% if student_list %}
         <div class="row justify-content-center">
             <div class="col-9">
-                <div class="row justify-content-center pt-5">
-                    <div class="col-11 pb-0">
-                        <div>
+                <div class="row justify-content-center pt-5" >
+                    <div class="col-11 pb-0 mx-0" >
+                        <div class="px-2 pb-2 pt-3" style="background-color: white">
                             <h1 class="text-justify mb-1 px-1" id="resp_text_7">Students Registered on the System</h1>
-                            <p class="text-justify font-weight-light mb-0" id="resp_text_4">Below are the students registered on this attendance system. 
+                            <hr class="mt-1 mb-1" style="margin-left: .6%; margin-right: .6%">
+                            <p class="text-justify font-weight-light mb-0 px-1" id="resp_text_4">Below are the students registered on this attendance system. 
                                 To go to each students profile click on their unique number or follow the 'view more link'
                                 You can filter by using the area to the left
                             </p>
                         </div>
                     </div>
-                </div> <hr class="mt-3 mx-5">
+                </div> 
                 
                 
                 {% for student in student_list %}
-                <div class="row justify-content-center pt-3 ">
+                <div class="row justify-content-center pt-2 ">
                     <div class="col-11 ">
-                        <div class="card pb-2 mb-3 mx-0 px-2 shadow-sm" id="list_card" >
+                        <div class="card pb-1 mb-0 mx-0 px-2 shadow-none" id="list_card" style="border-radius: 0%;">
                             <div class="row justify-content-center">
                                 <div class="col-2 text-center pt-3" id="img-top">
                                     
@@ -99,7 +100,7 @@
                 <div class="pt-4 pb-4">
                 </div>
 
-                <div class="card pt-3 pb-3 mr-0 pl-3" id="sticky_filter">
+                <div class=" pt-3 pb-3 mr-0 pl-3 " id="sticky_filter" style="background-color: white;">
 
 
                     <div class="" >
@@ -140,8 +141,8 @@
                                               
                                             </select>
                                     </div>
-                                    <div class="row justify-content-center pt-1" id="sticky-but">
-                                        <button type="submit" class="btn btn-outline-secondary py-1 align-self-center" >Submit</button>
+                                    <div class="row justify-content-center pt-1" id="sticky-but" >
+                                        <button type="submit" class="btn btn-outline-secondary py-1 align-self-center" style="border-color: rgb(202, 202, 202)">Submit</button>
                                     </div>
                                 </form>
                         
@@ -162,7 +163,7 @@
                         </div>
                         <div class="pt-4 pb-4">
                         </div>
-                        <div class="card pt-3 pb-3 mr-0 pl-3" style="width: 11.7vw" id="sticky_filter">
+                        <div class="card pt-3 pb-3 mr-0 pl-3" style="width: 11.7vw" id="sticky_filter" style="background-color: white;">
            
                                <div >
                                    <h4 class=" font-weight-light mb-0" id="resp_text_9">Filter by Program</h4><hr class="my-1 mr-4">

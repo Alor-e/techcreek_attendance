@@ -275,7 +275,7 @@ html, body, section, div.left-half, div.right-half, div.img {
 #list_card{
   border-width: 0vw;
   border-left-width: .16vw;
-  border-left-color: rgb(167, 212, 255);
+  border-left-color: rgb(198, 232, 255);
   
 }
 
@@ -283,7 +283,7 @@ html, body, section, div.left-half, div.right-half, div.img {
   #list_card{
     border-width: 0vw;
     border-left-width: .13vw;
-    border-left-color: rgb(167, 212, 255);
+    border-left-color: rgb(198, 228, 255);
     
   }
 }
@@ -548,4 +548,11 @@ html, body, section, div.left-half, div.right-half, div.img {
 
 #cn22{
   width: 98%;
+}
+
+.backg-img6{
+background-image: url(../images/bg_img.png);
+background-color: rgba(248, 248, 249.5, 0.699);
+min-height: 100vh;
+background-blend-mode: color;
 }
