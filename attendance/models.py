@@ -29,7 +29,7 @@ class Student(models.Model):
         ('Other','Other'),
     )
 
-    gender = models.CharField(max_length=50, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=50, choices=GENDER_CHOICES, null=True, blank=True)
     
     QUALIFICATION_CHOICES = (
         ('O Level', 'O Level'),
@@ -84,6 +84,7 @@ class Student(models.Model):
     roll_no = models.PositiveSmallIntegerField('Number of times present',null=True, blank=True, default=0)
     already_taken = models.BooleanField(default=False)
     picture = models.ImageField(upload_to = 'media/', null=True, blank=True )
+    test_score = models.CharField(max_length=10, blank=True, null=True)
 
 
     def __str__(self):

@@ -2,9 +2,22 @@ from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 # Register your models here.
 from .models import Student, Attendance, State, Local_govt
-from import_export import resources
+from import_export import resources, fields
 
 class StudentResource(resources.ModelResource):
+    
+    SN = fields.Field(column_name='S/N')
+    firstname = fields.Field(attribute='firstname', column_name='Firstname')
+    surname = fields.Field(attribute='surname', column_name='Surname')
+    phone_no = fields.Field(attribute='phone_no', column_name='Phone')
+    email = fields.Field(attribute='email', column_name='Email')
+    program_specific = fields.Field(attribute='program_specific', column_name='Course')
+    test_score = fields.Field(attribute='test_score', column_name='Test Score')
+    birthday = fields.Field(attribute='birthday', column_name='DOB')
+    edu_qualification = fields.Field(attribute='edu_qualification', column_name='Qualification')
+    state_of_origin = fields.Field(attribute='state_of_origin', column_name='State')
+    local_govt = fields.Field(attribute='local_govt', column_name='LGA')
+    address = fields.Field(attribute='address', column_name='Address')
 
     class Meta:
         model = Student
