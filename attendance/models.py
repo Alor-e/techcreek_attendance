@@ -21,15 +21,15 @@ class Student(models.Model):
     surname = models.CharField(max_length=50)
     firstname = models.CharField(max_length=50)
     middlename = models.CharField(max_length=50, null=True, blank=True)
-    birthday = models.DateField(verbose_name='Date of Birth')
+    birthday = models.DateField(verbose_name='Date of Birth', blank=True, null=True,)
 
-    GENDER_CHOICES=(
-        ('Male','Male'),
-        ('Female','Female'),
-        ('Other','Other'),
-    )
+    # GENDER_CHOICES=(
+    #     ('Male','Male'),
+    #     ('Female','Female'),
+    #     ('Other','Other'),
+    # )
 
-    gender = models.CharField(max_length=50, choices=GENDER_CHOICES, null=True, blank=True)
+    gender = models.CharField(max_length=50, null=True, blank=True)
     
     QUALIFICATION_CHOICES = (
         ('O Level', 'O Level'),
@@ -40,7 +40,7 @@ class Student(models.Model):
         ('Other', 'Other'),
     )
     
-    edu_qualification = models.CharField('Educational Qualification',max_length=50, choices=QUALIFICATION_CHOICES)
+    edu_qualification = models.CharField('Educational Qualification',max_length=50, choices=QUALIFICATION_CHOICES, null=True, blank=True)
    
     PROGRAMS_CHOICES = (
     ('Codegaminators', (
@@ -76,9 +76,9 @@ class Student(models.Model):
     program_version = models.CharField('Program Version', blank=True, null=True, max_length=50)
     program_specific = models.CharField('Course', blank=True, null=True, max_length=50)
     local_govt = models.CharField('Local Government', blank=True, null=True, max_length=50)
-    email = models.EmailField(max_length=254)
-    phone_no = models.CharField('Phone Number',max_length=15)
-    address = models.TextField()
+    email = models.EmailField(max_length=254, blank=True, null=True,)
+    phone_no = models.CharField('Phone Number',max_length=15, blank=True, null=True,)
+    address = models.TextField(blank=True, null=True,)
     registration_date = models.DateTimeField( auto_now=False, auto_now_add=True)
     unique_id = models.CharField(max_length=15, unique=True, null=True, blank=True)
     roll_no = models.PositiveSmallIntegerField('Number of times present',null=True, blank=True, default=0)
